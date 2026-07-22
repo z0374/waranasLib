@@ -1,0 +1,41 @@
+Waranas Library/
+├── 📂 cache/
+│   └── 📄 .gitkeep
+├── 📂 public/
+│   ├── 📂 assets/
+│   │   ├── 📂 css/
+│   │   │   └── 📄 style.css
+│   │   └── 📂 js/
+│             └── 📄 scripts.js
+├── 📂 src/
+│   ├── 📂 components/
+│   │   ├── 📄 btFloat.php
+│   │   ├── 📄 formwhats.php
+│   │   ├── 📄 grid.php
+│   │   ├── 📄 hamburguer.php
+│   │   ├── 📄 listing.php
+│   │   ├── 📄 menu.php
+│   │   ├── 📄 modal.php
+│   │   ├── 📄 search.php
+│   │   ├── 📄 section.php
+│   │   ├── 📄 sliding.php
+│   │   ├── 📄 slideshow.php
+│   │   ├── 📄 tabs.php
+│   │   ├── 📄 tagList.php
+│   │   └── 📄 textblock.php
+│   ├── 📂 core/
+│   │   ├── 📄 bootstrap.php
+│   │   ├── 📄 cache.php
+│   │   ├── 📄 database.php
+│   │   ├── 📄 renderer.php
+│   │   ├── 📄 request.php
+│   │   └── 📄 security.php
+│   ├── 📂 helpers/
+│   │   ├── 📄 formatters.php
+│   │   ├── 📄 sanitizers.php
+│   │   └── 📄 validators.php
+│   ├── 📄 globals.php
+│   └── 📄 svg.php
+├── 📄 index.php
+├── 📄 README.md
+└── 📄 structure.txt

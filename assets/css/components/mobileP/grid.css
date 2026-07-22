@@ -1,0 +1,56 @@
+.gridComponent::-webkit-scrollbar {
+    display: none;
+}
+.gridComponent {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+.gridComponent {
+    display: block;
+    overflow-x: auto;
+    overflow-y: hidden;
+    width: 96vw;
+    padding: 0 3%;
+    box-sizing: border-box;
+    white-space: nowrap;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    position: relative;
+}
+.gridComponent h1 {
+    display: block;
+    white-space: normal;
+    position: sticky;
+    left: 0;
+    top: 0;
+    z-index: 3;
+    width: 100%;
+    margin-bottom: 1.5rem;
+}
+.gridComponent div {
+    display: inline-flex;
+    flex-direction: column;
+    white-space: normal;
+    vertical-align: top;
+    min-width: 90%;
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
+    margin: 3%;
+}
+.gridComponent.iniciar-espiada div {
+    animation: hintScrollTutor 2.5s ease-in-out 1;
+}
+.gridComponent:active div,
+.gridComponent:focus-within div {
+    animation: none !important;
+}
+@keyframes hintScrollTutor {
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(-15vw);
+    }
+}

@@ -1,0 +1,14 @@
+.tag-section { 
+            width:calc(var(--tagList-tm) * 7.8vw);
+            height: fit-content;
+            min-height: 6cqw;
+            align-items: center;
+        }
+.tag-link {
+            width:6cqw;
+            height: 6cqw;
+            padding: 3% 0;
+        }
+.tag-section p {
+            height: fit-content;
+        }
