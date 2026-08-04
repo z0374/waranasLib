@@ -1,0 +1,405 @@
+# 🦍 Waranas Library
+
+> Biblioteca PHP modular baseada em componentes reutilizáveis e protocolos binários de alta performance.
+
+---
+
+# 📁 Estrutura do Projeto
+
+```text
+waranas_library/
+│
+├── 📄 index.php
+├── 📄 README.md
+│
+├── 📂 assets/
+│   ├── 🎨 css/
+│   ├── ⚙️ js/
+│   ├── 🖼️ images/
+│   ├── 🎯 icons/
+│   └── 🔤 fonts/
+│
+├── 📂 public/
+│   └── 📂 api/
+│       └── ...
+│
+├── 📂 src/
+│
+│   ├── 📄 globals.php
+│
+│   ├── 📂 api/
+│   │   ├── 📄 request.php
+│   │   ├── 📄 router.php
+│   │   └── 📄 submit.php
+│   │
+│   ├── 📂 components/
+│   │   ├── 📄 board.php
+│   │   ├── 📄 bubble.php
+│   │   ├── 📄 button.php
+│   │   ├── 📄 chat.php
+│   │   ├── 📄 grid.php
+│   │   ├── 📄 listing.php
+│   │   ├── 📄 menu.php
+│   │   ├── 📄 modal.php
+│   │   ├── 📄 search.php
+│   │   ├── 📄 section.php
+│   │   ├── 📄 slideshow.php
+│   │   ├── 📄 sliding.php
+│   │   ├── 📄 svg.php
+│   │   ├── 📄 tabs.php
+│   │   ├── 📄 tagList.php
+│   │   └── 📄 textblock.php
+│   │
+│   ├── 📂 core/
+│   │   ├── 📄 bootstrap.php
+│   │   ├── 📄 cache.php
+│   │   ├── 📄 cacheVerify.php
+│   │   ├── 📄 config.php
+│   │   ├── 📄 database.php
+│   │   ├── 📄 env.php
+│   │   ├── 📄 internalContent.php
+│   │   ├── 📄 renderer.php
+│   │   ├── 📄 router.php
+│   │   └── 📄 security.php
+│   │
+│   ├── 📂 helpers/
+│   │   ├── 📄 colors.php
+│   │   ├── 📄 formatters.php
+│   │   ├── 📄 minify.php
+│   │   ├── 📄 sanitizers.php
+│   │   └── 📄 validators.php
+│   │
+│   ├── 📂 private/
+│   │   └── 📂 api/
+│   │       └── 📄 manifestRouters.wl
+│   │
+│   ├── 📂 protocol/
+│   │   │
+│   │   ├── 📄 protocolGlobals.php
+│   │   │
+│   │   ├── 📂 BINTable/
+│   │   │   ├── 📄 createManifestBIN.php
+│   │   │   ├── 📄 findBIN.php
+│   │   │   ├── 📄 packerBIN.php
+│   │   │   ├── 📄 readBIN.php
+│   │   │   ├── 📄 unpackerBIN.php
+│   │   │   └── 📄 writeBIN.php
+│   │   │
+│   │   └── 📂 hashBIN/
+│   │       ├── 📄 hashBIN.php
+│   │       └── 📄 indexBIN.php
+│   │
+│   ├── 📂 service/
+│   │   ├── 📄 loadingAPI.php
+│   │   └── 📄 registerAPI.php
+│   │
+│   └── 📂 utils/
+│       ├── 📄 addedSvg.php
+│       ├── 📄 distinctDigits.php
+│       ├── 📄 getIframesheet.php
+│       ├── 📄 handlingHTML.php
+│       ├── 📄 setIframesheet.php
+│       └── 📄 waranasAssetsManager.php
+│
+└── 📂 vendor/
+```
+
+---
+
+# 🧩 Organização da Biblioteca
+
+## ⚙️ Core
+
+Responsável pelo funcionamento interno da biblioteca.
+
+```text
+bootstrap
+renderer
+router
+cache
+security
+database
+env
+config
+```
+
+---
+
+## 🧬 Protocol
+
+Protocolos de baixo nível responsáveis pelo armazenamento binário e algoritmos da biblioteca.
+
+### 📦 BINTable
+
+```text
+createManifestBIN()
+readBIN()
+writeBIN()
+findBIN()
+packerBIN()
+unpackerBIN()
+```
+
+### 🔢 hashBIN
+
+```text
+hashBIN()
+indexBIN()
+```
+
+---
+
+## 🧠 Services
+
+Camada responsável pelas regras de negócio.
+
+```text
+registerAPI()
+loadingAPI()
+```
+
+---
+
+## 🌐 API
+
+Ponto de entrada das APIs da biblioteca.
+
+```text
+request()
+router()
+submit()
+```
+
+---
+
+## 🧱 Components
+
+Componentes HTML reutilizáveis.
+
+```text
+menu()
+modal()
+listing()
+tabs()
+search()
+slideshow()
+grid()
+chat()
+...
+```
+
+---
+
+## 🛠 Helpers
+
+Funções auxiliares independentes.
+
+```text
+validators
+formatters
+sanitizers
+colors
+minify
+```
+
+---
+
+## 🔧 Utils
+
+Ferramentas de manipulação de recursos.
+
+```text
+addedSvg()
+handlingHTML()
+waranasAssetsManager()
+getIframesheet()
+setIframesheet()
+```
+
+---
+
+## 🔒 Private
+
+Arquivos internos utilizados pela biblioteca.
+
+```text
+manifestRouters.wl
+```
+
+---
+
+# 🚀 Fluxo de carregamento das APIs
+
+```text
+🌐 Requisição HTTP
+
+        │
+        ▼
+
+🧭 apiRouter()
+
+        │
+        ├──────────────► 📦 API Interna
+        │                     │
+        │                     ▼
+        │              require_once()
+        │
+        ▼
+
+📖 loadingAPI()
+
+        │
+        ▼
+
+🔢 indexBIN()
+
+        │
+        ▼
+
+📄 readBIN()
+
+        │
+        ▼
+
+🔍 findBIN()
+
+        │
+        ▼
+
+📂 require_once(path)
+```
+
+---
+
+# 📝 Fluxo de registro de APIs
+
+```text
+registerAPI()
+
+        │
+        ▼
+
+📦 createManifestBIN()
+
+        │
+        ▼
+
+🔢 indexBIN()
+
+        │
+        ▼
+
+📦 packerBIN()
+
+        │
+        ▼
+
+💾 writeBIN()
+```
+
+---
+
+# 💾 Estrutura do Registro BIN
+
+```text
+256 Bytes
+
+┌────────────┬──────────────────────────────┬─────────────────────────────┐
+│ Byte 0     │ Byte 1 → 32                  │ Byte 33 → 255               │
+├────────────┼──────────────────────────────┼─────────────────────────────┤
+│ 📌 Status  │ 🏷 Termo (32 Bytes)          │ 📂 Conteúdo (223 Bytes)     │
+└────────────┴──────────────────────────────┴─────────────────────────────┘
+```
+
+---
+
+# 📚 Estrutura de uma Linha BIN
+
+```text
+BIN_LINE_SIZE
+
+┌────────────┬────────────┬────────────┬────────────┬────────────┐
+│ 📦 Nível 0 │ 📦 Nível 1 │ 📦 Nível 2 │     ...    │ 📦 Nível 7 │
+└────────────┴────────────┴────────────┴────────────┴────────────┘
+
+Cada nível possui exatamente 256 Bytes.
+```
+
+---
+
+# 🗂 Estrutura do Manifest
+
+```text
+Manifest (.wl)
+
+Linha 0
+ ├── Nível 0
+ ├── Nível 1
+ ├── ...
+ └── Nível 7
+
+Linha 1
+ ├── Nível 0
+ ├── ...
+ └── Nível 7
+
+...
+
+Linha N
+```
+
+Cada linha é endereçada por **indexBIN()**.
+
+---
+
+# ⚡ Fluxo de Pesquisa
+
+```text
+Termo
+
+   │
+
+   ▼
+
+🧮 hashBIN()
+
+   │
+
+   ▼
+
+📍 indexBIN()
+
+   │
+
+   ▼
+
+📄 readBIN()
+
+   │
+
+   ▼
+
+🔍 findBIN()
+
+   │
+
+   ├──── Encontrou ✅
+   │          │
+   │          ▼
+   │      Conteúdo
+   │
+   └──── Não encontrou ❌
+```
+
+---
+
+# 🎯 Filosofia
+
+A Waranas Library é dividida em quatro grandes camadas:
+
+- 🧠 **Services** → regras de negócio.
+- ⚙️ **Protocols** → armazenamento e algoritmos.
+- 🧱 **Components** → interface reutilizável.
+- 🌐 **API/Core** → integração com aplicações.
+
+Essa arquitetura mantém cada módulo com uma responsabilidade única, facilitando reutilização, manutenção e desempenho.

@@ -1,0 +1,28 @@
+.gridComponent {
+    overflow-y: visible;
+    overflow-x: scroll;
+    width: 93vw;
+    min-height: 36rem;
+    padding: 0 6vw;
+    box-sizing: border-box;
+    display: grid;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    justify-items: start;
+    gap: 1.5rem;
+    grid-template-rows: 1fr 1fr;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+}
+.gridComponent h1 {
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 3;
+    grid-row: 1;
+}
+.gridComponent div {
+    width: 81vw;
+    grid-row: 2;
+    scroll-snap-align: center;
+}

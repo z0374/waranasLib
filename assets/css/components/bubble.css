@@ -1,0 +1,84 @@
+/* ============================================================
+   AllChat-GPL - Estilos dos Balões (Grid System)
+   ============================================================ */
+
+/* Contentor do Board (Grid) */
+.board-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* Uma única coluna */
+    gap: 12px;
+    padding: 15px;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+/* Base do Balão */
+.chat-bubble {
+    /* Altura ilimitada: cresce conforme o conteúdo */
+    height: auto; 
+    min-height: min-content;
+    
+    /* Largura limitada a 50% do grid conforme solicitado */
+    max-width: 50%;
+    
+    padding: 12px 16px;
+    border-radius: 18px;
+    font-size: 15px;
+    line-height: 1.5;
+    font-family: inherit;
+    
+    /* Força a quebra de texto em qualquer ponto para não estourar o grid */
+    overflow-wrap: anywhere; 
+    word-break: break-word;
+    
+    /* Animação suave */
+    animation: fadeIn 0.3s ease-out;
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-bubble .bubble-text {
+    display: block;
+    width: 100%;
+}
+
+/* --- Modelos de Remetentes (Alinhamento via Grid) --- */
+
+/* Mensagem do Usuário (Azul, Direita) */
+.chat-bubble.user {
+    background-color: #007bff;
+    color: #ffffff;
+    justify-self: end; /* Alinha o balão à direita no grid */
+    border-bottom-right-radius: 4px;
+    text-align: left;
+}
+
+/* Mensagem do Sistema (Cinza, Esquerda) */
+.chat-bubble.system {
+    background-color: #e9ecef;
+    color: #333333;
+    justify-self: start; /* Alinha o balão à esquerda no grid */
+    border-bottom-left-radius: 4px;
+}
+
+/* Mensagem de Erro (Vermelho, Esquerda) */
+.chat-bubble.error {
+    background-color: #ffe6e6;
+    color: #cc0000;
+    border: 1px solid #ffcccc;
+    justify-self: start;
+    border-bottom-left-radius: 4px;
+}
+
+/* Keyframe para animação */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

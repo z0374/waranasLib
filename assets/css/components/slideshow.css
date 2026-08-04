@@ -1,0 +1,134 @@
+/* Slideshow Component - Infinite Loop & Iframesheet Version */
+
+.slideshow {
+    /* Essencial para que a unidade 'cqw' funcione */
+    container-type: inline-size; 
+    position: relative;
+    overflow: hidden; /* Esconde slides fora da moldura */
+    width: calc(var(--slideshow-tm) * 2cqw);
+    height: calc(var(--slideshow-tm) * 1cqw);
+    border: solid 0.06rem black;
+    border-radius: calc(var(--slideshow-tm) * 0.06cqw);
+    background-color: #c3c3c333; /* Evita flash branco entre transições */
+}
+
+/* O "Trilho" - Ajustado para Loop Infinito Linear */
+.items_slideshow {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap; /* CRÍTICO: Impede que o conteúdo venha de baixo */
+    align-items: stretch;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    
+    /* Suavidade do movimento controlada pelo JS */
+    transition: transform 0.5s ease-in-out;
+    will-change: transform;
+    overflow: visible; 
+}
+
+/* Esconde scrollbars */
+.items_slideshow::-webkit-scrollbar {
+    display: none;
+}
+
+/* Wrapper do Slide - Força ocupação total sem deformar o trilho */
+.slide-wrapper {
+    flex: 0 0 100%; /* Grow: 0, Shrink: 0, Basis: 100% */
+    width: 100%;
+    height: 100%;
+    position: relative;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+/* Estrutura de Link e Placeholders do Iframesheet */
+.slide-link, 
+.iframesheet-placeholder {
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    text-decoration: none;
+}
+
+/* Garantia para o conteúdo do Iframesheet e Mídias */
+.slide-iframe-content,
+.slide-link img, 
+.slide-link video, 
+.slide-link iframe,
+.slide-link embed {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover; 
+    display: block;
+    border: none;
+    background-color: transparent;
+}
+
+/* --- Renderização "Default" (Background CSS com Blur) --- */
+
+.slide-link[style*='--bg-slide']::before {
+    content: '';
+    position: absolute;
+    top: -5%; left: -5%; 
+    width: 110%; height: 110%;
+    background-image: var(--bg-slide);
+    background-size: cover;
+    background-position: center;
+    filter: blur(15px) brightness(0.5);
+    z-index: 1;
+}
+
+.slide-link[style*='--bg-slide']::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; 
+    width: 100%; height: 100%;
+    background-image: var(--bg-slide);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: 2;
+}
+
+/* --- Navegação (Botões) --- */
+
+.slideshow .nav-bt {
+    width: 10%; 
+    height: 100%;
+    font-size: 2rem;
+    position: absolute; 
+    top: 0; 
+    z-index: 20;
+    border: none; 
+    color: #fff;
+    cursor: pointer;
+    transition: opacity 0.3s ease, background-color 0.3s ease;
+    opacity: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+}
+
+.slideshow:hover .nav-bt {
+    opacity: 1;
+}
+
+.nav-bt:hover {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.nav-bt-prev {
+    left: 0;
+    background: linear-gradient(to right, rgba(0,0,0,0.5), transparent);
+}
+
+.nav-bt-next {
+    right: 0;
+    background: linear-gradient(to left, rgba(0,0,0,0.5), transparent);
+}

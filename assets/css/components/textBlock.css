@@ -1,0 +1,17 @@
+.textblock {
+    width: 100%;
+    height: auto;
+    font-size: var(--textBlock-tm);
+    text-align: justify;
+    border-radius: calc(var(--textBlock-tm)*0.03vw);
+    background: var(--textBlock-bg);
+    padding: 1.2rem;
+}
+
+.textblock p {
+    width: 100%;
+    height: auto;
+    text-align: justify;
+    font-size: calc(var(--textBlock-tm) * 1rem);
+    font-weight: bolder;
+}
