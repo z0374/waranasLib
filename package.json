@@ -1,0 +1,17 @@
+{
+  "name": "waranas",
+  "version": "0.1.0",
+  "private": false,
+  "type": "module",
+  "main": "./main.index.ts",
+  "types": "./main.index.ts",
+  "exports": {
+    ".": "./main.index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^5.20260830.1"
+  }
+}
